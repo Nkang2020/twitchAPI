@@ -6,50 +6,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="styles.css" rel="stylesheet" type="text/css">
-
-<script>
-$(document).ready(function(){
-  var url1 = "https://wind-bow.gomix.me/twitch-api/streams/freecodecamp"
-  
-  var url2 = "https://wind-bow.gomix.me/twitch-api/users/tehchosenfrog/follows/channels/"
-  
-  $.getJSON(url1, function(data){
-   // console.log(data.stream)
-    if(data.stream===null){
-      $("#fcc").html("<a href='https://www.twitch.tv/freecodecamp'>Free Code Camp is OFFLINE</a>")
-    }
-    else{
-      $("#fcc").html("<a href='https://www.twitch.tv/freecodecamp'>Free Code Camp is ONLINE</a>")
-    }
-  });
-  
-  $.getJSON(url2, function(data2){
-    for(var i=0;i<data2.follows.length;i++){
-      $("#streamerList").prepend("<div class='row'><div class='col-md-4'><img src='"+data2.follows[i].channel.logo+"' id='logo'></div><div class='col-md-4'>"+data2.follows[i].channel.display_name+"</div><div class='col-md-4'>"+data2.follows[i].channel.status+"</div></div>")
-    }
-    
-  }); 
-});
-</script>
+<script type="text/javascript" src='script.js'></script>
 
 </head>
-
-<body class="text-center">
-  <h1>Twitch API Project</h1>
-  <h3>Twitch Streamers</h3>
-  <p id="fcc"></p>
-  <div class="row">
-    <div class="col-md-4" id="headline1">
-      <p class="headline">Icon</p>
+  <body>
+    <div class="container">
+      
+      <div id="header" class="text-center">
+        <h1>Use the Twitch TV JSON API</h1>
+        <h2>Front End Development Project</h2>
+        <a href="https://www.twitch.tv/freecodecamp" target="blank">
+        </a>
+      </div>
+      <h1>
+      <div class="row text-center">
+        <div class="col-md-4">Logo:</div>
+        <div class="col-md-4">Display Name:</div>
+        <div class="col-md-4">Status:</div>
+        </h1>
+      </div>
+      <div id="followerInfo"></div>
+      </div>
     </div>
-    <div class="col-md-4">
-      <p class="headline">Streamer</p>
-    </div>
-    <div class="col-md-4">
-      <p class="headline">Status</p>
-    </div>
-    <div id="streamerList">
-    </div>
-  </div>
-</body>
+  </body>
 </html>
